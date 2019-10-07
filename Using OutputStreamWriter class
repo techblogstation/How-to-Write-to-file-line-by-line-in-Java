@@ -1,0 +1,56 @@
+
+// Java Program for Write to file line by line using OutputStreamWriter class
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+
+public class ExampleJavaFileWrite {
+
+	public static void main(String[] args) {
+
+//Declaring reference of File class
+		File file = null;
+
+//Declaring reference of FileOutputStream class
+		FileOutputStream fos = null;
+
+//Declaring reference of OutputStreamWriter class
+		OutputStreamWriter osw = null;
+
+		try {
+
+			file = new File("result.txt");
+
+//Creating object of FileOutputStream class
+			fos = new FileOutputStream(file);
+
+//Creating object of OutputStreamWriter class
+			osw = new OutputStreamWriter(fos);
+
+			String data = "TechBlogStation";
+
+//Writing to the file
+			osw.write(data);
+
+//Closing the stream
+			osw.close();
+
+			System.out.println("File writing done.");
+
+		}
+//Handing Exception
+		catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (osw != null) {
+					osw.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+}
